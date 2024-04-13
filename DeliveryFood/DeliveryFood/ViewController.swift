@@ -24,7 +24,7 @@ class ViewController: UIViewController {
             label.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
         
-        label.font = .systemFont(ofSize: 40, weight: UIFont.Weight(20))
+        label.font = .Roboto.bold.size(of: 40)
         label.textColor = .white
     }
 
