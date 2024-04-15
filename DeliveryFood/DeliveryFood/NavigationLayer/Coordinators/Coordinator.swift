@@ -19,20 +19,16 @@ enum CoordinatorType {
 protocol CoordinatorProtocol: AnyObject {
     var childCoordinators: [CoordinatorProtocol] { get set }
     var type: CoordinatorType { get set }
-    var navigationController: UIViewController? { get set }
+    var navigationController: UINavigationController? { get set }
     var finishDelegate: CoordinatorFinishDelegate? { get set }
     
     func start()
     func finish()
 }
 
-protocol CoordinatorFinishDelegate: AnyObject {
-    func coordinatorDidFinish(childCorrdinator: CoordinatorProtocol)
-}
-
 extension CoordinatorProtocol {
- func addChildCoordinator(_ childCoordinator: CoordinatorProtocol) {
-     childCoordinators.append(childCoordinator)
+    func addChildCoordinator(_ childCoordinator: CoordinatorProtocol) {
+        childCoordinators.append(childCoordinator)
     }
     
     func removeChildCoordinator(_ childCoordinator: CoordinatorProtocol) {
@@ -40,5 +36,41 @@ extension CoordinatorProtocol {
     }
 }
 
+protocol CoordinatorFinishDelegate: AnyObject {
+    func coordinatorDidFinish(childCorrdinator: CoordinatorProtocol)
+}
 
+protocol TabBarCoordinator: AnyObject {
+    var tabBarController: UITabBarController? { get set }
+}
+
+
+
+class Coordinator: CoordinatorProtocol {
+    var childCoordinators: [CoordinatorProtocol]
+    var type: CoordinatorType
+    var navigationController: UINavigationController?
+    var finishDelegate: CoordinatorFinishDelegate?
+    
+    init(childCoordinators: [CoordinatorProtocol] = [CoordinatorProtocol](), type: CoordinatorType, navigationController: UINavigationController, finishDelegate: CoordinatorFinishDelegate? = nil) {
+        self.childCoordinators = childCoordinators
+        self.type = type
+        self.navigationController = navigationController
+        self.finishDelegate = finishDelegate
+    }
+    
+    deinit {
+        print("Coordinator deinited \(type)")
+        childCoordinators.forEach { $0.finishDelegate = nil }
+        childCoordinators.removeAll()
+    }
+    
+    func start() {
+        print("Coordinator start")
+    }
+    
+    func finish() {
+        print("Coordinator start")
+    }
+}
 
