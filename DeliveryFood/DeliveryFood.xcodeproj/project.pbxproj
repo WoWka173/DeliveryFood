@@ -12,6 +12,12 @@
 		199EBFAB2BC45584006A5838 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199EBFAA2BC45584006A5838 /* ViewController.swift */; };
 		199EBFB02BC45586006A5838 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 199EBFAF2BC45586006A5838 /* Assets.xcassets */; };
 		199EBFB32BC45586006A5838 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 199EBFB22BC45586006A5838 /* Base */; };
+		19B5F77A2BD6BCEC0084EF05 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B5F7792BD6BCEC0084EF05 /* HomeCoordinator.swift */; };
+		19B5F77C2BD6BD330084EF05 /* OrderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B5F77B2BD6BD330084EF05 /* OrderCoordinator.swift */; };
+		19B5F77E2BD6BD790084EF05 /* ListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B5F77D2BD6BD790084EF05 /* ListCoordinator.swift */; };
+		19B5F7802BD6BDA20084EF05 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B5F77F2BD6BDA20084EF05 /* ProfileCoordinator.swift */; };
+		19B5F7822BD6BDED0084EF05 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B5F7812BD6BDED0084EF05 /* TabBarController.swift */; };
+		19C3B8922BCD60BA0023A0CB /* OnBoardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3B8912BCD60BA0023A0CB /* OnBoardingCoordinator.swift */; };
 		19C6BC682BC6DE970019B5AE /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 19C6BC5A2BC6DE970019B5AE /* LICENSE.txt */; };
 		19C6BC692BC6DE970019B5AE /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 19C6BC5B2BC6DE970019B5AE /* Roboto-Black.ttf */; };
 		19C6BC6A2BC6DE970019B5AE /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 19C6BC5C2BC6DE970019B5AE /* Roboto-BlackItalic.ttf */; };
@@ -28,6 +34,8 @@
 		19E04A042BCAD08E0062C269 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E04A032BCAD08E0062C269 /* UIFont+Extension.swift */; };
 		19E04A062BCAD5310062C269 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E04A052BCAD5310062C269 /* UIColor+Extensions.swift */; };
 		19E04A082BCAD6750062C269 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E04A072BCAD6750062C269 /* AppColors.swift */; };
+		19E04A0D2BCADAE30062C269 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E04A0C2BCADAE30062C269 /* Coordinator.swift */; };
+		19E04A0F2BCAE3800062C269 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E04A0E2BCAE3800062C269 /* AppCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +46,12 @@
 		199EBFAF2BC45586006A5838 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		199EBFB22BC45586006A5838 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		199EBFB42BC45586006A5838 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		19B5F7792BD6BCEC0084EF05 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		19B5F77B2BD6BD330084EF05 /* OrderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCoordinator.swift; sourceTree = "<group>"; };
+		19B5F77D2BD6BD790084EF05 /* ListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCoordinator.swift; sourceTree = "<group>"; };
+		19B5F77F2BD6BDA20084EF05 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
+		19B5F7812BD6BDED0084EF05 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		19C3B8912BCD60BA0023A0CB /* OnBoardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingCoordinator.swift; sourceTree = "<group>"; };
 		19C6BC5A2BC6DE970019B5AE /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		19C6BC5B2BC6DE970019B5AE /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		19C6BC5C2BC6DE970019B5AE /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
@@ -54,6 +68,8 @@
 		19E04A032BCAD08E0062C269 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		19E04A052BCAD5310062C269 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		19E04A072BCAD6750062C269 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		19E04A0C2BCADAE30062C269 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		19E04A0E2BCAE3800062C269 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +102,7 @@
 		199EBFA52BC45584006A5838 /* DeliveryFood */ = {
 			isa = PBXGroup;
 			children = (
+				19E04A092BCADA910062C269 /* NavigationLayer */,
 				19C6BC562BC6DE310019B5AE /* Resourses */,
 				199EBFA62BC45584006A5838 /* AppDelegate.swift */,
 				199EBFA82BC45584006A5838 /* SceneDelegate.swift */,
@@ -142,6 +159,37 @@
 				19E04A052BCAD5310062C269 /* UIColor+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		19E04A092BCADA910062C269 /* NavigationLayer */ = {
+			isa = PBXGroup;
+			children = (
+				19E04A0B2BCADAC90062C269 /* Coordinators */,
+				19E04A0A2BCADABE0062C269 /* Controllers */,
+			);
+			path = NavigationLayer;
+			sourceTree = "<group>";
+		};
+		19E04A0A2BCADABE0062C269 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				19B5F7812BD6BDED0084EF05 /* TabBarController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		19E04A0B2BCADAC90062C269 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				19E04A0C2BCADAE30062C269 /* Coordinator.swift */,
+				19E04A0E2BCAE3800062C269 /* AppCoordinator.swift */,
+				19C3B8912BCD60BA0023A0CB /* OnBoardingCoordinator.swift */,
+				19B5F7792BD6BCEC0084EF05 /* HomeCoordinator.swift */,
+				19B5F77B2BD6BD330084EF05 /* OrderCoordinator.swift */,
+				19B5F77D2BD6BD790084EF05 /* ListCoordinator.swift */,
+				19B5F77F2BD6BDA20084EF05 /* ProfileCoordinator.swift */,
+			);
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,8 +279,16 @@
 				19E04A062BCAD5310062C269 /* UIColor+Extensions.swift in Sources */,
 				199EBFA72BC45584006A5838 /* AppDelegate.swift in Sources */,
 				19E04A082BCAD6750062C269 /* AppColors.swift in Sources */,
+				19E04A0F2BCAE3800062C269 /* AppCoordinator.swift in Sources */,
 				19E04A042BCAD08E0062C269 /* UIFont+Extension.swift in Sources */,
+				19B5F77C2BD6BD330084EF05 /* OrderCoordinator.swift in Sources */,
 				199EBFA92BC45584006A5838 /* SceneDelegate.swift in Sources */,
+				19B5F7802BD6BDA20084EF05 /* ProfileCoordinator.swift in Sources */,
+				19B5F77E2BD6BD790084EF05 /* ListCoordinator.swift in Sources */,
+				19B5F77A2BD6BCEC0084EF05 /* HomeCoordinator.swift in Sources */,
+				19B5F7822BD6BDED0084EF05 /* TabBarController.swift in Sources */,
+				19E04A0D2BCADAE30062C269 /* Coordinator.swift in Sources */,
+				19C3B8922BCD60BA0023A0CB /* OnBoardingCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
