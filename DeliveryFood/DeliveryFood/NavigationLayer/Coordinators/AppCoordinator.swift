@@ -9,8 +9,8 @@ import UIKit
 
 class AppCoordinator: Coordinator {
     override func start() {
-//        showOnBoardingFlow()
-        showMainFlow()
+        showOnBoardingFlow()
+//        showMainFlow()
     }
     
     override func finish() {

@@ -10,8 +10,7 @@ import UIKit
 class OnboardingCoordinator: Coordinator {
     
     override func start() {
-        let vc = ViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        showOnboarding()
     }
     
     override func finish() {
@@ -19,3 +18,20 @@ class OnboardingCoordinator: Coordinator {
     }
 }
 
+private extension OnboardingCoordinator {
+    func showOnboarding() {
+        var pages = [UIViewController]()
+        let firstVC = UIViewController()
+        firstVC.view.backgroundColor = .yellow
+        let secondVC = UIViewController()
+        secondVC.view.backgroundColor = .purple
+        let thirdVC = UIViewController()
+        thirdVC.view.backgroundColor = .brown
+        pages.append(firstVC)
+        pages.append(secondVC)
+        pages.append(thirdVC)
+        let presenter = OnBoardingViewPresenter(coordinator: self)
+        let viewController = OnBoardingViewController(pages: pages, viewOutput: presenter)
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+}
