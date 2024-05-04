@@ -12,7 +12,7 @@ class OnBoardingViewController: UIViewController {
     
     //MARK: - Properties
     private var pages = [OnboardingPartViewController]()
-    weak var viewOutput: OnBoardingViewOutputProtocol!
+    var viewOutput: OnBoardingViewOutputProtocol!
     
     private let pageViewController: UIPageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
     private let pageControl = UIPageControl()
@@ -57,6 +57,7 @@ private extension OnBoardingViewController {
             bottomButton.setTitle(pages[3].buttonText, for: .normal)
         case 3:
             print("Exit")
+            viewOutput.onboardingFinish()
         default:
             break
             
@@ -103,7 +104,7 @@ private extension OnBoardingViewController {
         bottomButton.backgroundColor = AppColors.gray
         bottomButton.titleLabel?.font = .Roboto.bold.size(of: 18)
         bottomButton.setTitleColor(AppColors.black, for: .normal)
-        bottomButton.layer.cornerRadius = 16
+        bottomButton.layer.cornerRadius = 24
         
         bottomButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         
