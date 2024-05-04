@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1904B0E52BDD623C00BEF556 /* OnBoardingViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1904B0E42BDD623C00BEF556 /* OnBoardingViewOutput.swift */; };
-		1904B0E72BDD628B00BEF556 /* OnBoardingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1904B0E62BDD628B00BEF556 /* OnBoardingPresenter.swift */; };
+		1904B0E52BDD623C00BEF556 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1904B0E42BDD623C00BEF556 /* OnboardingViewController.swift */; };
+		1904B0E72BDD628B00BEF556 /* OnboardingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1904B0E62BDD628B00BEF556 /* OnboardingPresenter.swift */; };
+		191E3D902BDFEB3A003A3358 /* OnboardingPartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191E3D8F2BDFEB3A003A3358 /* OnboardingPartViewController.swift */; };
 		199EBFA72BC45584006A5838 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199EBFA62BC45584006A5838 /* AppDelegate.swift */; };
 		199EBFA92BC45584006A5838 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199EBFA82BC45584006A5838 /* SceneDelegate.swift */; };
 		199EBFAB2BC45584006A5838 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199EBFAA2BC45584006A5838 /* ViewController.swift */; };
@@ -19,7 +20,7 @@
 		19B5F77E2BD6BD790084EF05 /* ListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B5F77D2BD6BD790084EF05 /* ListCoordinator.swift */; };
 		19B5F7802BD6BDA20084EF05 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B5F77F2BD6BDA20084EF05 /* ProfileCoordinator.swift */; };
 		19B5F7822BD6BDED0084EF05 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B5F7812BD6BDED0084EF05 /* TabBarController.swift */; };
-		19C3B8922BCD60BA0023A0CB /* OnBoardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3B8912BCD60BA0023A0CB /* OnBoardingCoordinator.swift */; };
+		19C3B8922BCD60BA0023A0CB /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C3B8912BCD60BA0023A0CB /* OnboardingCoordinator.swift */; };
 		19C6BC682BC6DE970019B5AE /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 19C6BC5A2BC6DE970019B5AE /* LICENSE.txt */; };
 		19C6BC692BC6DE970019B5AE /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 19C6BC5B2BC6DE970019B5AE /* Roboto-Black.ttf */; };
 		19C6BC6A2BC6DE970019B5AE /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 19C6BC5C2BC6DE970019B5AE /* Roboto-BlackItalic.ttf */; };
@@ -41,8 +42,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1904B0E42BDD623C00BEF556 /* OnBoardingViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewOutput.swift; sourceTree = "<group>"; };
-		1904B0E62BDD628B00BEF556 /* OnBoardingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingPresenter.swift; sourceTree = "<group>"; };
+		1904B0E42BDD623C00BEF556 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		1904B0E62BDD628B00BEF556 /* OnboardingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPresenter.swift; sourceTree = "<group>"; };
+		191E3D8F2BDFEB3A003A3358 /* OnboardingPartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPartViewController.swift; sourceTree = "<group>"; };
 		199EBFA32BC45584006A5838 /* DeliveryFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeliveryFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		199EBFA62BC45584006A5838 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		199EBFA82BC45584006A5838 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,7 +57,7 @@
 		19B5F77D2BD6BD790084EF05 /* ListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCoordinator.swift; sourceTree = "<group>"; };
 		19B5F77F2BD6BDA20084EF05 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		19B5F7812BD6BDED0084EF05 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		19C3B8912BCD60BA0023A0CB /* OnBoardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingCoordinator.swift; sourceTree = "<group>"; };
+		19C3B8912BCD60BA0023A0CB /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
 		19C6BC5A2BC6DE970019B5AE /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		19C6BC5B2BC6DE970019B5AE /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		19C6BC5C2BC6DE970019B5AE /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
@@ -98,8 +100,9 @@
 		1904B0E32BDD620E00BEF556 /* OnBoarding */ = {
 			isa = PBXGroup;
 			children = (
-				1904B0E42BDD623C00BEF556 /* OnBoardingViewOutput.swift */,
-				1904B0E62BDD628B00BEF556 /* OnBoardingPresenter.swift */,
+				1904B0E42BDD623C00BEF556 /* OnboardingViewController.swift */,
+				1904B0E62BDD628B00BEF556 /* OnboardingPresenter.swift */,
+				191E3D8F2BDFEB3A003A3358 /* OnboardingPartViewController.swift */,
 			);
 			path = OnBoarding;
 			sourceTree = "<group>";
@@ -205,7 +208,7 @@
 			children = (
 				19E04A0C2BCADAE30062C269 /* Coordinator.swift */,
 				19E04A0E2BCAE3800062C269 /* AppCoordinator.swift */,
-				19C3B8912BCD60BA0023A0CB /* OnBoardingCoordinator.swift */,
+				19C3B8912BCD60BA0023A0CB /* OnboardingCoordinator.swift */,
 				19B5F7792BD6BCEC0084EF05 /* HomeCoordinator.swift */,
 				19B5F77B2BD6BD330084EF05 /* OrderCoordinator.swift */,
 				19B5F77D2BD6BD790084EF05 /* ListCoordinator.swift */,
@@ -306,13 +309,14 @@
 				19B5F77C2BD6BD330084EF05 /* OrderCoordinator.swift in Sources */,
 				199EBFA92BC45584006A5838 /* SceneDelegate.swift in Sources */,
 				19B5F7802BD6BDA20084EF05 /* ProfileCoordinator.swift in Sources */,
-				1904B0E52BDD623C00BEF556 /* OnBoardingViewOutput.swift in Sources */,
+				1904B0E52BDD623C00BEF556 /* OnboardingViewController.swift in Sources */,
 				19B5F77E2BD6BD790084EF05 /* ListCoordinator.swift in Sources */,
 				19B5F77A2BD6BCEC0084EF05 /* HomeCoordinator.swift in Sources */,
 				19B5F7822BD6BDED0084EF05 /* TabBarController.swift in Sources */,
+				191E3D902BDFEB3A003A3358 /* OnboardingPartViewController.swift in Sources */,
 				19E04A0D2BCADAE30062C269 /* Coordinator.swift in Sources */,
-				19C3B8922BCD60BA0023A0CB /* OnBoardingCoordinator.swift in Sources */,
-				1904B0E72BDD628B00BEF556 /* OnBoardingPresenter.swift in Sources */,
+				19C3B8922BCD60BA0023A0CB /* OnboardingCoordinator.swift in Sources */,
+				1904B0E72BDD628B00BEF556 /* OnboardingPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
