@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1904B0E52BDD623C00BEF556 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1904B0E42BDD623C00BEF556 /* OnboardingViewController.swift */; };
 		1904B0E72BDD628B00BEF556 /* OnboardingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1904B0E62BDD628B00BEF556 /* OnboardingPresenter.swift */; };
+		190E315A2BE932E400B71312 /* SceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190E31592BE932E400B71312 /* SceneFactory.swift */; };
 		191E3D902BDFEB3A003A3358 /* OnboardingPartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191E3D8F2BDFEB3A003A3358 /* OnboardingPartViewController.swift */; };
 		198D77E72BE66388000FC70A /* UserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198D77E62BE66388000FC70A /* UserStorage.swift */; };
 		199EBFA72BC45584006A5838 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199EBFA62BC45584006A5838 /* AppDelegate.swift */; };
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		1904B0E42BDD623C00BEF556 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		1904B0E62BDD628B00BEF556 /* OnboardingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPresenter.swift; sourceTree = "<group>"; };
+		190E31592BE932E400B71312 /* SceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneFactory.swift; sourceTree = "<group>"; };
 		191E3D8F2BDFEB3A003A3358 /* OnboardingPartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPartViewController.swift; sourceTree = "<group>"; };
 		198D77E62BE66388000FC70A /* UserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorage.swift; sourceTree = "<group>"; };
 		199EBFA32BC45584006A5838 /* DeliveryFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeliveryFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +96,7 @@
 		1904B0E22BDD61D100BEF556 /* UILayer */ = {
 			isa = PBXGroup;
 			children = (
+				190E31582BE932C500B71312 /* SceneFactory */,
 				1904B0E32BDD620E00BEF556 /* OnBoarding */,
 			);
 			path = UILayer;
@@ -107,6 +110,14 @@
 				191E3D8F2BDFEB3A003A3358 /* OnboardingPartViewController.swift */,
 			);
 			path = OnBoarding;
+			sourceTree = "<group>";
+		};
+		190E31582BE932C500B71312 /* SceneFactory */ = {
+			isa = PBXGroup;
+			children = (
+				190E31592BE932E400B71312 /* SceneFactory.swift */,
+			);
+			path = SceneFactory;
 			sourceTree = "<group>";
 		};
 		198D77E52BE66367000FC70A /* ServicesLayer */ = {
@@ -326,6 +337,7 @@
 				19B5F7822BD6BDED0084EF05 /* TabBarController.swift in Sources */,
 				191E3D902BDFEB3A003A3358 /* OnboardingPartViewController.swift in Sources */,
 				198D77E72BE66388000FC70A /* UserStorage.swift in Sources */,
+				190E315A2BE932E400B71312 /* SceneFactory.swift in Sources */,
 				19E04A0D2BCADAE30062C269 /* Coordinator.swift in Sources */,
 				19C3B8922BCD60BA0023A0CB /* OnboardingCoordinator.swift in Sources */,
 				1904B0E72BDD628B00BEF556 /* OnboardingPresenter.swift in Sources */,
