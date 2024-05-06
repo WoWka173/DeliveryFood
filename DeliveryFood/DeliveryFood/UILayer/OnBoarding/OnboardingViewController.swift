@@ -11,9 +11,9 @@ import UIKit
 class OnBoardingViewController: UIViewController {
     
     //MARK: - Properties
-    private var pages = [OnboardingPartViewController]()
     var viewOutput: OnBoardingViewOutputProtocol!
-    
+    private var pages = [OnboardingPartViewController]()
+    private var cuyrrentPageIndex = 0
     private let pageViewController: UIPageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
     private let pageControl = UIPageControl()
     private let bottomButton = UIButton()
@@ -139,8 +139,14 @@ extension OnBoardingViewController: UIPageViewControllerDataSource {
 extension OnBoardingViewController: UIPageViewControllerDelegate {
     func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
         if let index = pages.firstIndex(of: pendingViewControllers.first! as! OnboardingPartViewController) {
-            pageControl.currentPage = index
-            let page = pages[index]
+            cuyrrentPageIndex = index
+        }
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        if completed {
+            pageControl.currentPage = cuyrrentPageIndex
+            let page = pages[cuyrrentPageIndex]
             let title = page.buttonText
             bottomButton.setTitle(title, for: .normal)
         }
