@@ -43,6 +43,7 @@
 		19E04A082BCAD6750062C269 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E04A072BCAD6750062C269 /* AppColors.swift */; };
 		19E04A0D2BCADAE30062C269 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E04A0C2BCADAE30062C269 /* Coordinator.swift */; };
 		19E04A0F2BCAE3800062C269 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E04A0E2BCAE3800062C269 /* AppCoordinator.swift */; };
+		19E503E02C7B1B5100D881A2 /* FDButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E503DF2C7B1B5100D881A2 /* FDButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +85,7 @@
 		19E04A072BCAD6750062C269 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		19E04A0C2BCADAE30062C269 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		19E04A0E2BCAE3800062C269 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		19E503DF2C7B1B5100D881A2 /* FDButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,22 +102,21 @@
 		1904B0E22BDD61D100BEF556 /* UILayer */ = {
 			isa = PBXGroup;
 			children = (
-				19A7D1DA2C7209CC00CBDC11 /* Presenters */,
-				19A7D1D52C72089700CBDC11 /* AuthScene */,
-				190E31582BE932C500B71312 /* SceneFactory */,
-				1904B0E32BDD620E00BEF556 /* OnBoarding */,
+				19E503DE2C7B1AF400D881A2 /* Scenes */,
+				19E503DD2C7B1AC100D881A2 /* Views */,
+				19A7D1DA2C7209CC00CBDC11 /* Factory */,
 			);
 			path = UILayer;
 			sourceTree = "<group>";
 		};
-		1904B0E32BDD620E00BEF556 /* OnBoarding */ = {
+		1904B0E32BDD620E00BEF556 /* OnBoardingScene */ = {
 			isa = PBXGroup;
 			children = (
 				1904B0E42BDD623C00BEF556 /* OnboardingViewController.swift */,
 				1904B0E62BDD628B00BEF556 /* OnboardingPresenter.swift */,
 				191E3D8F2BDFEB3A003A3358 /* OnboardingPartViewController.swift */,
 			);
-			path = OnBoarding;
+			path = OnBoardingScene;
 			sourceTree = "<group>";
 		};
 		190E31582BE932C500B71312 /* SceneFactory */ = {
@@ -170,6 +171,7 @@
 		19A7D1D52C72089700CBDC11 /* AuthScene */ = {
 			isa = PBXGroup;
 			children = (
+				19E503E12C7B1B7F00D881A2 /* Presenters */,
 				19A7D1D92C7209C000CBDC11 /* Controllers */,
 				19A7D1D82C7209B700CBDC11 /* Views */,
 			);
@@ -192,11 +194,12 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		19A7D1DA2C7209CC00CBDC11 /* Presenters */ = {
+		19A7D1DA2C7209CC00CBDC11 /* Factory */ = {
 			isa = PBXGroup;
 			children = (
+				190E31582BE932C500B71312 /* SceneFactory */,
 			);
-			path = Presenters;
+			path = Factory;
 			sourceTree = "<group>";
 		};
 		19C6BC562BC6DE310019B5AE /* Resourses */ = {
@@ -275,6 +278,30 @@
 				19B5F77F2BD6BDA20084EF05 /* ProfileCoordinator.swift */,
 			);
 			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		19E503DD2C7B1AC100D881A2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				19E503DF2C7B1B5100D881A2 /* FDButton.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		19E503DE2C7B1AF400D881A2 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				19A7D1D52C72089700CBDC11 /* AuthScene */,
+				1904B0E32BDD620E00BEF556 /* OnBoardingScene */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		19E503E12C7B1B7F00D881A2 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenters;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -379,6 +406,7 @@
 				190E315A2BE932E400B71312 /* SceneFactory.swift in Sources */,
 				19E04A0D2BCADAE30062C269 /* Coordinator.swift in Sources */,
 				19A7D1DC2C720A3E00CBDC11 /* BottomView.swift in Sources */,
+				19E503E02C7B1B5100D881A2 /* FDButton.swift in Sources */,
 				19C3B8922BCD60BA0023A0CB /* OnboardingCoordinator.swift in Sources */,
 				1904B0E72BDD628B00BEF556 /* OnboardingPresenter.swift in Sources */,
 			);
