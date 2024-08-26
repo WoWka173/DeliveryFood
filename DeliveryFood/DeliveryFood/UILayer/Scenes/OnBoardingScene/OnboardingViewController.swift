@@ -16,7 +16,6 @@ class OnBoardingViewController: UIViewController {
     private var cuyrrentPageIndex = 0
     private let pageViewController: UIPageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
     private let pageControl = UIPageControl()
-//    private let bottomButton = UIButton()
     private let bottomButton = FDButton()
     
     //MARK: - Init
@@ -41,6 +40,7 @@ class OnBoardingViewController: UIViewController {
 
 //MARK: - Actions
 private extension OnBoardingViewController {
+    
     @objc
     func buttonPressed() {
         switch pageControl.currentPage {
@@ -68,6 +68,7 @@ private extension OnBoardingViewController {
 
 //MARK: - Layout
 private extension OnBoardingViewController {
+    
     func setupPageViewController() {
         pageViewController.delegate = self
         pageViewController.dataSource = self
