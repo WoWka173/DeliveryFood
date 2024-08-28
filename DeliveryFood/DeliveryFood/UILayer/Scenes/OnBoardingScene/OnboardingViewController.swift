@@ -16,7 +16,7 @@ class OnBoardingViewController: UIViewController {
     private var cuyrrentPageIndex = 0
     private let pageViewController: UIPageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
     private let pageControl = UIPageControl()
-    private let bottomButton = UIButton()
+    private let bottomButton = FDButton()
     
     //MARK: - Init
     init(pages: [OnboardingPartViewController] = [OnboardingPartViewController](), viewOutput: OnBoardingViewOutputProtocol!) {
@@ -40,21 +40,22 @@ class OnBoardingViewController: UIViewController {
 
 //MARK: - Actions
 private extension OnBoardingViewController {
+    
     @objc
     func buttonPressed() {
         switch pageControl.currentPage {
         case 0:
             pageControl.currentPage = 1
             pageViewController.setViewControllers([pages[1]], direction: .forward, animated: true, completion: nil)
-            bottomButton.setTitle(pages[1].buttonText, for: .normal)
+            bottomButton.setTitle(pages[1].buttonText)
         case 1:
             pageControl.currentPage = 2
             pageViewController.setViewControllers([pages[2]], direction: .forward, animated: true, completion: nil)
-            bottomButton.setTitle(pages[2].buttonText, for: .normal)
+            bottomButton.setTitle(pages[2].buttonText)
         case 2:
             pageControl.currentPage = 3
             pageViewController.setViewControllers([pages[3]], direction: .forward, animated: true, completion: nil)
-            bottomButton.setTitle(pages[3].buttonText, for: .normal)
+            bottomButton.setTitle(pages[3].buttonText)
         case 3:
             print("Exit")
             viewOutput.onboardingFinish()
@@ -67,6 +68,7 @@ private extension OnBoardingViewController {
 
 //MARK: - Layout
 private extension OnBoardingViewController {
+    
     func setupPageViewController() {
         pageViewController.delegate = self
         pageViewController.dataSource = self
@@ -84,7 +86,7 @@ private extension OnBoardingViewController {
         pageControl.currentPage = 0
         let page = pages[0]
         let title = page.buttonText
-        bottomButton.setTitle(title, for: .normal)
+        bottomButton.setTitle(title)
         
         pageControl.isUserInteractionEnabled = false
         
@@ -101,13 +103,10 @@ private extension OnBoardingViewController {
     func setupButton() {
         view.addSubview(bottomButton)
         bottomButton.translatesAutoresizingMaskIntoConstraints = false
-        bottomButton.backgroundColor = AppColors.gray
-        bottomButton.titleLabel?.font = .Roboto.bold.size(of: 18)
-        bottomButton.setTitleColor(AppColors.black, for: .normal)
-        bottomButton.layer.cornerRadius = 24
-        
-        bottomButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
-        
+        bottomButton.action = { [weak self] in
+            self?.buttonPressed()
+        }
+        bottomButton.scheme = .gray
         
         NSLayoutConstraint.activate([
             bottomButton.bottomAnchor.constraint(equalTo: pageControl.bottomAnchor, constant: -44),
@@ -148,7 +147,7 @@ extension OnBoardingViewController: UIPageViewControllerDelegate {
             pageControl.currentPage = cuyrrentPageIndex
             let page = pages[cuyrrentPageIndex]
             let title = page.buttonText
-            bottomButton.setTitle(title, for: .normal)
+            bottomButton.setTitle(title)
         }
     }
 }
