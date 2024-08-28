@@ -13,7 +13,7 @@ class AppCoordinator: Coordinator {
     private let factory = SceneFactory.self
     
     override func start() {
-        userStorage.passedOnboarding = false
+//        userStorage.passedOnboarding = false
         
         if userStorage.passedOnboarding {
             showAuthFlow()
