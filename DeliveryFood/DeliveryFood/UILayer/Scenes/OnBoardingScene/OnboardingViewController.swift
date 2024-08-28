@@ -103,7 +103,9 @@ private extension OnBoardingViewController {
     func setupButton() {
         view.addSubview(bottomButton)
         bottomButton.translatesAutoresizingMaskIntoConstraints = false
-        bottomButton.action = buttonPressed
+        bottomButton.action = { [weak self] in
+            self?.buttonPressed()
+        }
         bottomButton.scheme = .gray
         
         NSLayoutConstraint.activate([
