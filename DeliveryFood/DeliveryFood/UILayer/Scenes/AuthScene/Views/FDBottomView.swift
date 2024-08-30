@@ -77,10 +77,12 @@ class FDBottomView: UIView {
         self.addSubview(view2)
         view2.translatesAutoresizingMaskIntoConstraints = false
         view2.image = UIImage(named: "BottomViewimage")
+        view2.contentMode = .scaleAspectFill
+        view2.clipsToBounds = true
         
         NSLayoutConstraint.activate([
             view2.topAnchor.constraint(equalTo: view1.bottomAnchor, constant: 18),
-            view2.leftAnchor.constraint(equalTo: self.leftAnchor, constant: -60),
+            view2.leftAnchor.constraint(equalTo: self.leftAnchor),
             view2.heightAnchor.constraint(equalToConstant: 150),
             view2.widthAnchor.constraint(equalToConstant: 282)
         ])
