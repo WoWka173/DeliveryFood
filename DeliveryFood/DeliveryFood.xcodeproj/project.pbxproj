@@ -11,6 +11,7 @@
 		1904B0E72BDD628B00BEF556 /* OnboardingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1904B0E62BDD628B00BEF556 /* OnboardingPresenter.swift */; };
 		190E315A2BE932E400B71312 /* SceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190E31592BE932E400B71312 /* SceneFactory.swift */; };
 		191E3D902BDFEB3A003A3358 /* OnboardingPartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191E3D8F2BDFEB3A003A3358 /* OnboardingPartViewController.swift */; };
+		196C0AED2C8D903B0023C0C4 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196C0AEC2C8D903B0023C0C4 /* LoginCoordinator.swift */; };
 		198D77E72BE66388000FC70A /* UserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198D77E62BE66388000FC70A /* UserStorage.swift */; };
 		199EBFA72BC45584006A5838 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199EBFA62BC45584006A5838 /* AppDelegate.swift */; };
 		199EBFA92BC45584006A5838 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199EBFA82BC45584006A5838 /* SceneDelegate.swift */; };
@@ -53,6 +54,7 @@
 		1904B0E62BDD628B00BEF556 /* OnboardingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPresenter.swift; sourceTree = "<group>"; };
 		190E31592BE932E400B71312 /* SceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneFactory.swift; sourceTree = "<group>"; };
 		191E3D8F2BDFEB3A003A3358 /* OnboardingPartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPartViewController.swift; sourceTree = "<group>"; };
+		196C0AEC2C8D903B0023C0C4 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		198D77E62BE66388000FC70A /* UserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorage.swift; sourceTree = "<group>"; };
 		199EBFA32BC45584006A5838 /* DeliveryFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeliveryFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		199EBFA62BC45584006A5838 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 			children = (
 				19E04A0C2BCADAE30062C269 /* Coordinator.swift */,
 				19E04A0E2BCAE3800062C269 /* AppCoordinator.swift */,
+				196C0AEC2C8D903B0023C0C4 /* LoginCoordinator.swift */,
 				19C3B8912BCD60BA0023A0CB /* OnboardingCoordinator.swift */,
 				19B5F7792BD6BCEC0084EF05 /* HomeCoordinator.swift */,
 				19B5F77B2BD6BD330084EF05 /* OrderCoordinator.swift */,
@@ -410,6 +413,7 @@
 				19B5F7822BD6BDED0084EF05 /* TabBarController.swift in Sources */,
 				19D56B212C7CDEBB009DDEBF /* LoginViewPresenter.swift in Sources */,
 				191E3D902BDFEB3A003A3358 /* OnboardingPartViewController.swift in Sources */,
+				196C0AED2C8D903B0023C0C4 /* LoginCoordinator.swift in Sources */,
 				198D77E72BE66388000FC70A /* UserStorage.swift in Sources */,
 				190E315A2BE932E400B71312 /* SceneFactory.swift in Sources */,
 				19E04A0D2BCADAE30062C269 /* Coordinator.swift in Sources */,

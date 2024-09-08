@@ -14,11 +14,8 @@ enum LoginViewState {
 }
 
 protocol LoginViewInputProtocol: AnyObject {
-    func onSingInTapped()
-    func onSingUpTapped()
-    func onFacebookTapped()
-    func onGoogleTapped()
-    func onForgotTapped()
+    func startLoader()
+    func stopLoader()
 }
 
 class LoginViewController: UIViewController {
@@ -42,6 +39,8 @@ class LoginViewController: UIViewController {
     private lazy var signInButton = FDButton()
     private lazy var signUpButton = FDButton()
     private lazy var verticalStack = UIStackView()
+    private lazy var loader = UIActivityIndicatorView(style: .large)
+    private lazy var loaderContainer = UIView()
     
     //MARK: - Constraits
     private var stackViewBottomCT = NSLayoutConstraint()
@@ -111,11 +110,12 @@ private extension LoginViewController {
             setupForgotLabel()
             setupNavigationBar()
         }
+        setupLoaderView()
     }
     
     func setupNavigationBar() {
         let backImage = UIImage(resource: .backArrow)
-        let backButtonItem = UIBarButtonItem(image: backImage, 
+        let backButtonItem = UIBarButtonItem(image: backImage,
                                              style: .plain,
                                              target: navigationController,
                                              action: #selector(navigationController?.popViewController(animated:)))
@@ -179,7 +179,9 @@ private extension LoginViewController {
         signInButton.translatesAutoresizingMaskIntoConstraints = false
         signInButton.setTitle("Sign In")
         signInButton.scheme = .orange
-        signInButton.action = onSingInTapped
+        signInButton.action = { [weak self] in
+            self?.onSingInTapped()
+        }
         
         switch state {
         case .initial:
@@ -213,213 +215,255 @@ private extension LoginViewController {
         signUpButton.translatesAutoresizingMaskIntoConstraints = false
         signUpButton.setTitle("Sign Up")
         signUpButton.scheme = .gray
-        signUpButton.action = onSingUpTapped
-        
-        NSLayoutConstraint.activate([
-            signUpButton.topAnchor.constraint(equalTo: signInButton.bottomAnchor, constant: 20),
-            signUpButton.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 30),
-            signUpButton.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -30),
-            signUpButton.heightAnchor.constraint(equalToConstant: 50)
-        ])
-    }
-    
-    func setupSignInPassword() {
-        signInPassword.translatesAutoresizingMaskIntoConstraints = false
-        signInPassword.placeholder = "Password"
-        
-        NSLayoutConstraint.activate([
-            signInPassword.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 30),
-            signInPassword.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -30),
-            signInPassword.heightAnchor.constraint(equalToConstant: 50),
-        ])
-    }
-    
-    func setupSignInUsername() {
-        signInUsername.translatesAutoresizingMaskIntoConstraints = false
-        signInUsername.placeholder = "Username"
-        
-        NSLayoutConstraint.activate([
-            signInUsername.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 30),
-            signInUsername.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -30),
-            signInUsername.heightAnchor.constraint(equalToConstant: 50),
-        ])
-    }
-    
-    func setupTitleLabel() {
-        view.addSubview(titleLabel)
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.font = .Roboto.bold.size(of: 24)
-        
-        switch state {
-        case .singIn:
-            titleLabel.text = "Sign in"
+        signUpButton.action = { [weak self] in
+            self?.onSingUpTapped()
+        }
             
-        case .singUp:
-            titleLabel.text = "Sign up"
+            NSLayoutConstraint.activate([
+                signUpButton.topAnchor.constraint(equalTo: signInButton.bottomAnchor, constant: 20),
+                signUpButton.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 30),
+                signUpButton.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -30),
+                signUpButton.heightAnchor.constraint(equalToConstant: 50)
+            ])
+        }
+        
+        func setupSignInPassword() {
+            signInPassword.translatesAutoresizingMaskIntoConstraints = false
+            signInPassword.placeholder = "Password"
             
-        case .initial:
-            return
+            NSLayoutConstraint.activate([
+                signInPassword.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 30),
+                signInPassword.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -30),
+                signInPassword.heightAnchor.constraint(equalToConstant: 50),
+            ])
         }
         
-        NSLayoutConstraint.activate([
-            titleLabel.bottomAnchor.constraint(equalTo: verticalStack.topAnchor, constant: -38),
-            titleLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30),
-            titleLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30),
-            titleLabel.heightAnchor.constraint(equalToConstant: 50)
-        ])
-    }
-    
-    func setupBottomView() {
-        view.addSubview(bottomView)
-        bottomView.translatesAutoresizingMaskIntoConstraints = false
+        func setupSignInUsername() {
+            signInUsername.translatesAutoresizingMaskIntoConstraints = false
+            signInUsername.placeholder = "Username"
+            
+            NSLayoutConstraint.activate([
+                signInUsername.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 30),
+                signInUsername.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -30),
+                signInUsername.heightAnchor.constraint(equalToConstant: 50),
+            ])
+        }
         
-        bottomView.buttonGoogleAction = googleButtonPress
-        bottomView.buttonFacebookAction = facebookButtonPress
+        func setupTitleLabel() {
+            view.addSubview(titleLabel)
+            titleLabel.translatesAutoresizingMaskIntoConstraints = false
+            titleLabel.font = .Roboto.bold.size(of: 24)
+            
+            switch state {
+            case .singIn:
+                titleLabel.text = "Sign in"
+                
+            case .singUp:
+                titleLabel.text = "Sign up"
+                
+            case .initial:
+                return
+            }
+            
+            NSLayoutConstraint.activate([
+                titleLabel.bottomAnchor.constraint(equalTo: verticalStack.topAnchor, constant: -38),
+                titleLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30),
+                titleLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30),
+                titleLabel.heightAnchor.constraint(equalToConstant: 50)
+            ])
+        }
         
-        NSLayoutConstraint.activate([
-            bottomView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            bottomView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            bottomView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            bottomView.heightAnchor.constraint(equalToConstant: 150)
-        ])
-    }
-    
-    func setupForgotLabel() {
-        view.addSubview(forgotLabel)
-        forgotLabel.translatesAutoresizingMaskIntoConstraints = false
-        forgotLabel.text = "Forgot Password?"
-        forgotLabel.font = .Roboto.regular.size(of: 14)
-        forgotLabel.textColor = AppColors.bottomViewGrey
+        func setupBottomView() {
+            view.addSubview(bottomView)
+            bottomView.translatesAutoresizingMaskIntoConstraints = false
+            
+            bottomView.buttonGoogleAction = { [weak self] in
+                self?.googleButtonPress()
+            }
+            bottomView.buttonFacebookAction = { [weak self] in
+                self?.facebookButtonPress()
+            }
+            
+            NSLayoutConstraint.activate([
+                bottomView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+                bottomView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+                bottomView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+                bottomView.heightAnchor.constraint(equalToConstant: 150)
+            ])
+        }
         
-        NSLayoutConstraint.activate([
-            forgotLabel.topAnchor.constraint(equalTo: signInButton.bottomAnchor, constant: 20),
-            forgotLabel.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -30),
-        ])
+        func setupForgotLabel() {
+            view.addSubview(forgotLabel)
+            forgotLabel.translatesAutoresizingMaskIntoConstraints = false
+            forgotLabel.text = "Forgot Password?"
+            forgotLabel.font = .Roboto.regular.size(of: 14)
+            forgotLabel.textColor = AppColors.bottomViewGrey
+            
+            NSLayoutConstraint.activate([
+                forgotLabel.topAnchor.constraint(equalTo: signInButton.bottomAnchor, constant: 20),
+                forgotLabel.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -30),
+            ])
+            
+        }
         
-    }
-    
-    func setupSignUpPassword() {
-        signUpPassword.translatesAutoresizingMaskIntoConstraints = false
-        signUpPassword.placeholder = "Enter Password"
+        func setupSignUpPassword() {
+            signUpPassword.translatesAutoresizingMaskIntoConstraints = false
+            signUpPassword.placeholder = "Enter Password"
+            
+            NSLayoutConstraint.activate([
+                signUpPassword.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30),
+                signUpPassword.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30),
+                signUpPassword.heightAnchor.constraint(equalToConstant: 50)
+            ])
+        }
         
-        NSLayoutConstraint.activate([
-            signUpPassword.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30),
-            signUpPassword.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30),
-            signUpPassword.heightAnchor.constraint(equalToConstant: 50)
-        ])
-    }
-    
-    func setupSignUpUsername() {
-        signUpUsername.translatesAutoresizingMaskIntoConstraints = false
-        signUpUsername.placeholder = "Enter Username"
+        func setupSignUpUsername() {
+            signUpUsername.translatesAutoresizingMaskIntoConstraints = false
+            signUpUsername.placeholder = "Enter Username"
+            
+            NSLayoutConstraint.activate([
+                signUpUsername.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30),
+                signUpUsername.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30),
+                signUpUsername.heightAnchor.constraint(equalToConstant: 50)
+            ])
+        }
         
-        NSLayoutConstraint.activate([
-            signUpUsername.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30),
-            signUpUsername.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30),
-            signUpUsername.heightAnchor.constraint(equalToConstant: 50)
-        ])
-    }
-    
-    func setupSignUpReEnterPass() {
-        signUpReEnterPassword.translatesAutoresizingMaskIntoConstraints = false
-        signUpReEnterPassword.placeholder = "Re-enter Password"
+        func setupSignUpReEnterPass() {
+            signUpReEnterPassword.translatesAutoresizingMaskIntoConstraints = false
+            signUpReEnterPassword.placeholder = "Re-enter Password"
+            
+            NSLayoutConstraint.activate([
+                signUpReEnterPassword.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30),
+                signUpReEnterPassword.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30),
+                signUpReEnterPassword.heightAnchor.constraint(equalToConstant: 50)
+            ])
+        }
         
-        NSLayoutConstraint.activate([
-            signUpReEnterPassword.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30),
-            signUpReEnterPassword.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30),
-            signUpReEnterPassword.heightAnchor.constraint(equalToConstant: 50)
-        ])
-    }
-}
-
-//MARK: - LoginViewInput delegate
-extension LoginViewController: LoginViewInputProtocol {
-    func onSingInTapped() {
-        switch state {
-        case .initial:
-            viewOutput?.goToSignIn()
-        case .singIn:
-            return
-        case .singUp:
-            return
+        func setupLoaderView() {
+            view.addSubview(loaderContainer)
+            loaderContainer.translatesAutoresizingMaskIntoConstraints = false
+            loaderContainer.backgroundColor = AppColors.black.withAlphaComponent(0.3)
+            loaderContainer.isHidden = true
+            
+            
+            NSLayoutConstraint.activate([
+                loaderContainer.widthAnchor.constraint(equalTo: view.widthAnchor),
+                loaderContainer.heightAnchor.constraint(equalTo: view.heightAnchor)
+            ])
+            
+            loader.translatesAutoresizingMaskIntoConstraints = false
+            loaderContainer.addSubview(loader)
+            
+            NSLayoutConstraint.activate([
+                loader.centerXAnchor.constraint(equalTo: loaderContainer.centerXAnchor),
+                loader.centerYAnchor.constraint(equalTo: loaderContainer.centerYAnchor)
+            ])
         }
     }
     
-    func onSingUpTapped() {
-        switch state {
-        case .initial:
-            viewOutput?.goToSignUp()
-        case .singIn:
-            return
-        case .singUp:
-            return
+    //MARK: - LoginViewInput delegate
+    extension LoginViewController: LoginViewInputProtocol {
+        func startLoader() {
+            loaderContainer.isHidden = false
+            loader.startAnimating()
         }
-    }
-    
-    func onFacebookTapped() {
+        
+        func stopLoader() {
+            loaderContainer.isHidden = true
+            loader.stopAnimating()
+        }
+        
         
     }
     
-    func onGoogleTapped() {
+    //MARK: - Observers
+    private extension LoginViewController {
+        func setupObservers() {
+            startKeyboardListener()
+        }
         
-    }
-    
-    func onForgotTapped() {
+        func startKeyboardListener() {
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+            
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+            
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+            view.addGestureRecognizer(tapGesture)
+        }
         
-    }
-}
-
-//MARK: - Observers
-private extension LoginViewController {
-    func setupObservers() {
-        startKeyboardListener()
-    }
-    
-    func startKeyboardListener() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        func stopKeyboardListener() {
+            NotificationCenter.default.removeObserver(self)
+        }
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        @objc
+        func handleTap(_ sender: UIGestureRecognizer) {
+            view.endEditing(true)
+        }
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
-        view.addGestureRecognizer(tapGesture)
-    }
-    
-    func stopKeyboardListener() {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
-    @objc
-    func handleTap(_ sender: UIGestureRecognizer) {
-        view.endEditing(true)
-    }
-    
-    @objc
-    func keyboardWillShow(_ notification: Notification) {
-        guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        @objc
+        func keyboardWillShow(_ notification: Notification) {
+            guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+            
+            let keyboardHeight = keyboardFrame.cgRectValue.height
+            
+            if !isKeyboardShown {
+                UIView.animate(withDuration: 0.3) {
+                    self.stackViewBottomCT.constant -= keyboardHeight/4
+                    self.view.layoutIfNeeded()
+                    self.isKeyboardShown = true
+                }
+            }
+        }
         
-        let keyboardHeight = keyboardFrame.cgRectValue.height
-        
-        if !isKeyboardShown {
-            UIView.animate(withDuration: 0.3) {
-                self.stackViewBottomCT.constant -= keyboardHeight/4
-                self.view.layoutIfNeeded()
-                self.isKeyboardShown = true
+        @objc
+        func keyboardWillHide(_ notification: Notification) {
+            if isKeyboardShown {
+                UIView.animate(withDuration: 0.3) {
+                    self.stackViewBottomCT.constant = self.bottomCTValue
+                    self.view.layoutIfNeeded()
+                    self.isKeyboardShown = false
+                }
             }
         }
     }
     
-    @objc
-    func keyboardWillHide(_ notification: Notification) {
-        if isKeyboardShown {
-            UIView.animate(withDuration: 0.3) {
-                self.stackViewBottomCT.constant = self.bottomCTValue
-                self.view.layoutIfNeeded()
-                self.isKeyboardShown = false
+    private extension LoginViewController {
+        func onSingInTapped() {
+            switch state {
+            case .initial:
+                viewOutput?.goToSignIn()
+            case .singIn:
+                print(#function)
+                viewOutput?.loginStart(login: signInUsername.text ?? "", password: signInPassword.text ?? "")
+            case .singUp:
+                return
             }
         }
+        
+        func onSingUpTapped() {
+            switch state {
+            case .initial:
+                viewOutput?.goToSignUp()
+            case .singIn:
+                return
+            case .singUp:
+                return
+            }
+        }
+        
+        func onFacebookTapped() {
+            
+        }
+        
+        func onGoogleTapped() {
+            
+        }
+        
+        func onForgotTapped() {
+            
+        }
     }
-}
-
-//#Preview("LoginViewController") {
-//    LoginViewController(viewOutput: LoginPresenter(), state: .singUp)
-//}
+    
+    //#Preview("LoginViewController") {
+    //    LoginViewController(viewOutput: LoginPresenter(), state: .singUp)
+    //}
