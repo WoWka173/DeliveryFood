@@ -8,7 +8,7 @@
 import Foundation
 
 protocol LoginViewOutputProtocol: AnyObject {
-    func login()
+    func loginStart(login: String, password: String)
     func registrartionStart()
     func goToFacebookLogin()
     func goToGoogleLogin()
@@ -20,18 +20,36 @@ protocol LoginViewOutputProtocol: AnyObject {
 
 class LoginPresenter {
     
-    private var coordinator: AppCoordinator?
+    private var coordinator: LoginCoordinator?
     weak var viewInput: LoginViewInputProtocol?
     
-    init(coordinator: AppCoordinator? = nil, viewInput: LoginViewInputProtocol? = nil) {
+    init(coordinator: LoginCoordinator? = nil, viewInput: LoginViewInputProtocol? = nil) {
         self.coordinator = coordinator
         self.viewInput = viewInput
     }
 }
 
+private extension LoginPresenter {
+    func goToMainScreen() {
+        coordinator?.finish()
+    }
+}
+
 extension LoginPresenter: LoginViewOutputProtocol {
-    func login() {
-        
+    func loginStart(login: String, password: String) {
+        viewInput?.startLoader()
+        if login == "Test" && password == "123" {
+            DispatchQueue.global().asyncAfter(deadline: .now() + 2) {
+                DispatchQueue.main.async {
+                    self.goToMainScreen()
+                }
+            }
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                print("wrong email or password")
+                self.viewInput?.stopLoader()
+            }
+        }
     }
     
     func registrartionStart() {
@@ -61,6 +79,4 @@ extension LoginPresenter: LoginViewOutputProtocol {
     func back() {
         
     }
-    
-    
 }
