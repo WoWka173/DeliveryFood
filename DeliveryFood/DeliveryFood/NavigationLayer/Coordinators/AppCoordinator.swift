@@ -31,7 +31,8 @@ class AppCoordinator: Coordinator {
 private extension AppCoordinator {
     func showOnBoardingFlow() {
         guard let navigationController = navigationController else { return }
-        factory.createOnboardingFlow(coordinator: self, finishDelegate: self, navigationController: navigationController)
+        let onboardingCoordinator = factory.createOnboardingFlow(coordinator: self, finishDelegate: self, navigationController: navigationController)
+        onboardingCoordinator.start()
     }
     
     func showMainFlow() {
@@ -42,26 +43,12 @@ private extension AppCoordinator {
     
     func showAuthFlow() {
         guard let navigationController = navigationController else { return }
-        let authViewController = factory.makeAuthScene(coordinator: self)
-        navigationController.pushViewController(authViewController, animated: true)
+        let loginCoordinator = factory.createLoginFlow(coordinator: self, finishDelegate: self, navigationController: navigationController)
+        loginCoordinator.start()
     }
 }
 
-//MARK: - Methods
-extension AppCoordinator {
-    func showSignInScene() {
-        guard let navigationController = navigationController else { return }
-        let signInViewController = factory.makeSignInScene(coordinator: self)
-        navigationController.pushViewController(signInViewController, animated: true)
-    }
-    
-    func showSignUpScene() {
-        guard let navigationController = navigationController else { return }
-        let signUpViewController = factory.makeSignUpScene(coordinator: self)
-        navigationController.pushViewController(signUpViewController, animated: true)
-    }
-}
-
+//MARK: - FinishDelegate
 extension AppCoordinator: CoordinatorFinishDelegate {
     func coordinatorDidFinish(childCorrdinator: any CoordinatorProtocol) {
         removeChildCoordinator(childCorrdinator)
@@ -70,6 +57,9 @@ extension AppCoordinator: CoordinatorFinishDelegate {
         case .onboarding:
             navigationController?.viewControllers.removeAll()
             showAuthFlow()
+        case .login:
+            navigationController?.viewControllers.removeAll()
+            showMainFlow()
         case .app:
             return
         default:
