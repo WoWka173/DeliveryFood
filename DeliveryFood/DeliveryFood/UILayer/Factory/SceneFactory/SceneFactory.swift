@@ -66,25 +66,25 @@ struct SceneFactory {
         
         let homeNavigationController = UINavigationController()
         let homeCoordinator = HomeCoordinator(type: .home, navigationController: homeNavigationController)
-        homeNavigationController.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house.fill"), tag: 0)
+        homeNavigationController.tabBarItem = UITabBarItem(title: "Home", image: UIImage(resource: .home), tag: 0)
         homeCoordinator.finishDelegate = finishDelegate
         homeCoordinator.start()
         
         let orderNavigationController = UINavigationController()
         let orderCoordinator = OrderCoordinator(type: .order, navigationController: orderNavigationController)
-        orderNavigationController.tabBarItem = UITabBarItem(title: "Order", image: UIImage(systemName: "house.fill"), tag: 0)
+        orderNavigationController.tabBarItem = UITabBarItem(title: "Order", image: UIImage(resource: .order), tag: 0)
         orderCoordinator.finishDelegate = finishDelegate
         orderCoordinator.start()
         
         let listNavigationController = UINavigationController()
         let listCoordinator = ListCoordinator(type: .list, navigationController: listNavigationController)
-        listNavigationController.tabBarItem = UITabBarItem(title: "List", image: UIImage(systemName: "house.fill"), tag: 0)
+        listNavigationController.tabBarItem = UITabBarItem(title: "List", image: UIImage(resource: .myList), tag: 0)
         listCoordinator.finishDelegate = finishDelegate
         listCoordinator.start()
         
         let profileNavigationController = UINavigationController()
         let profileCoordinator = ProfileCoordinator(type: .profile, navigationController: profileNavigationController)
-        profileNavigationController.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "house.fill"), tag: 0)
+        profileNavigationController.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(resource: .profile), tag: 0)
         profileCoordinator.finishDelegate = finishDelegate
         profileCoordinator.start()
         
